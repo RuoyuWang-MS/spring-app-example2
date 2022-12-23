@@ -1,0 +1,29 @@
+on: [workflow_dispatch]
+env:
+  subscription: ${{ secrets.AZURE_SUBSCRIPTION }}
+  service_name: ruoyu-test
+  app_name: hello
+
+jobs:
+  Deploy_job:
+    runs-on: ubuntu-latest
+    name: Deploy
+    steps:
+      - name: Checkout Github Action
+        uses: actions/checkout@master
+
+      - name: Login via Azure CLI
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_SUBSCRIPTION_SP }}
+
+      - name: Deploy to default deployment
+        uses: Azure/spring-apps-deploy@v1
+        with:
+          azure-subscription: ${{ env.subscription }}
+          action: deploy
+          service-name: ${{ env.service_name }}
+          app-name: ${{ env.app_name }}
+          use-staging-deployment: false
+          package: ${{ github.workspace }}
+          jvm-options: -Xms512m -Xmx512m
