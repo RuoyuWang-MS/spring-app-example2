@@ -20,7 +20,7 @@ jobs:
           creds: ${{ secrets.AZURE_SUBSCRIPTION_SP }}
 
       - name: Create service instance and app
-        run: bash create_service_app.sh
+        run: bash ${{ github.workspace }}/.github/workflows/create_service_app.sh
         shell: bash
         env: 
           subscription: ${{ secrets.AZURE_SUBSCRIPTION }}
