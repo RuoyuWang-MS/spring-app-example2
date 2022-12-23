@@ -25,5 +25,5 @@ jobs:
           service-name: ${{ env.service_name }}
           app-name: ${{ env.app_name }}
           use-staging-deployment: false
-          package: ${{ github.workspace }}
+          package: ${{ github.workspace }}/test-app
           jvm-options: -Xms512m -Xmx512m
