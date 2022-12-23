@@ -1,5 +1,6 @@
 set -ex
 
+az extension add -n spring
 az account set -s $subscription
 az group create -l $location -n $rg_name
 az spring create -g $rg_name -n $service_name
