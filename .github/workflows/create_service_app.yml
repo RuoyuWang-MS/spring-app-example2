@@ -5,6 +5,7 @@ env:
   rg_name: ruoyu-test-rg
   service_name: ruoyu-test
   app_name: hello
+  location: eastus
 
 jobs:
   Create_service_and_app_job:
